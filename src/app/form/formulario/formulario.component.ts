@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Register } from '../register';
-import { FormGroup, FormControl } from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
@@ -21,9 +21,9 @@ export class FormularioComponent implements OnInit {
 
   createForm(cliente: Register) {
     this.formRegister = new FormGroup({
-      nome: new FormControl(cliente.nome),
-      email : new FormControl(cliente.email),
-      telefone : new FormControl(cliente.telefone)
+      nome: new FormControl(cliente.nome, Validators.required),
+      email : new FormControl(cliente.email, Validators.required),
+      telefone : new FormControl(cliente.telefone, Validators.required)
     })
   }
 
@@ -43,5 +43,17 @@ export class FormularioComponent implements OnInit {
       console.error('There was an error!', error);
     });
     this.formRegister.reset(new Register());
+  }
+
+  get nome(){
+    return this.formRegister.get('nome');
+  }
+
+  get email(){
+    return this.formRegister.get('email');
+  }
+
+  get telefone(){
+    return this.formRegister.get('telefone');
   }
 }

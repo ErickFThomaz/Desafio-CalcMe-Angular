@@ -1,22 +1,29 @@
 <form [formGroup]="formRegister" (ngSubmit)="onSubmit(formRegister.value)">
   <div class="container px-5 my-5">
-      <div class="mb-3">
-        <label class="form-label" for="nome">Nome</label>
-        <input class="form-control" id="nome" type="text" placeholder="Nome" data-sb-validations="required" formControlName="nome" />
-        <div class="invalid-feedback" data-sb-feedback="nome:required">Nome is required.</div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="email">Email</label>
-        <input class="form-control" id="email" type="text" placeholder="Email" data-sb-validations="required" formControlName="email"/>
-        <div class="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="telefone">Telefone</label>
-        <input class="form-control" id="telefone" type="text" placeholder="Telefone" data-sb-validations="required" formControlName="telefone"/>
-        <div class="invalid-feedback" data-sb-feedback="telefone:required">Telefone is required.</div>
-      </div>
-      <div class="d-grid">
-        <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
-      </div>
+    <div class="mb-3">
+      <label class="form-label" for="nome">Nome</label>
+      <input class="form-control" id="nome" type="text"
+             formControlName="nome" required/>
+
+      <div *ngIf="nome?.errors?.required && nome?.touched"><p style="color: red;">Você precisa peencher o Nome</p></div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="email">Email</label>
+      <input class="form-control" id="email" type="text" placeholder="ex@xyz.com" data-sb-validations="required"
+             formControlName="email" required/>
+      <div *ngIf="email?.errors?.required && email?.touched"><p style="color: red;">Você precisa peencher o Email</p></div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="telefone">Telefone</label>
+      <input class="form-control" id="telefone" type="text" placeholder="(xx) xxxxx-xxxx" data-sb-validations="required"
+             formControlName="telefone" required/>
+      <div *ngIf="telefone?.errors?.required && telefone?.touched"><p style="color: red;">Você precisa peencher o Telefone</p></div>
+    </div>
+
+    <div class="d-grid">
+      <p>Complete todo o formulário para habilitar o botão.</p>
+      <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit" [disabled]="!formRegister.valid">Submit</button>
+    </div>
   </div>
 </form>
