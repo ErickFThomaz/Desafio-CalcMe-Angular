@@ -1,0 +1,9 @@
+[{
+  "_id": {
+    "$oid": "60fb87ff39a52e7e745d9ab9"
+  },
+  "nome": "Erick Ferreira Thomaz",
+  "email": "erickfthomaz@gmail.com",
+  "telefone": "11994273055",
+  "_class": "desafio.calcme.database.User"
+}]
